@@ -22,35 +22,35 @@ today = mm + "/" + dd + "/" + yyyy;
 
 window.addEventListener(CY.modules().FACE_AGE.eventName, (evt) => {
 	age_div.innerHTML =
-		"Edad probable: " + evt.detail.output.numericAge + " años";
-	console.log("Edad:", evt.detail.output.numericAge);
+		"LIKELY AGE: " + evt.detail.output.numericAge + " years";
+	console.log("AGE:", evt.detail.output.numericAge);
 });
 
 window.addEventListener(CY.modules().FACE_GENDER.eventName, (evt) => {
-	gen_div.innerHTML = "Genero probable: " + evt.detail.output.mostConfident;
-	console.log("Genero:", evt.detail.output.mostConfident);
+	gen_div.innerHTML = "LIKELY GENDER: " + evt.detail.output.mostConfident;
+	console.log("GENDER:", evt.detail.output.mostConfident);
 });
 
 window.addEventListener(CY.modules().FACE_EMOTION.eventName, (evt) => {
 	emo_div.innerHTML =
-		"Emoción dominante: " + evt.detail.output.dominantEmotion;
+		"Dominant Emotion: " + evt.detail.output.dominantEmotion;
 	var myDate = new Date()
 		.toTimeString()
 		.replace(/.*(\d{2}:\d{2}:\d{2}).*/, "$1");
-	console.log("Fecha:", today);
-	console.log("Hora:", myDate);
-	console.log("Emoción dominante:", evt.detail.output.dominantEmotion);
+	console.log("Date:", today);
+	console.log("Hour:", myDate);
+	console.log("Dominant Emotion:", evt.detail.output.dominantEmotion);
 	// datos para el histograma
 	const emotions = evt.detail.output.emotion;
 	const labels = [];
 	const data = [];
-	console.log("Enojo:", evt.detail.output.emotion.Angry);
-	console.log("Disgusto:", evt.detail.output.emotion.Disgust);
-	console.log("Miedo:", evt.detail.output.emotion.Fear);
-	console.log("Felicidad:", evt.detail.output.emotion.Happy);
+	console.log("Angry:", evt.detail.output.emotion.Angry);
+	console.log("Disgust:", evt.detail.output.emotion.Disgust);
+	console.log("Fear:", evt.detail.output.emotion.Fear);
+	console.log("Happy:", evt.detail.output.emotion.Happy);
 	console.log("Neutral:", evt.detail.output.emotion.Neutral);
-	console.log("Triste:", evt.detail.output.emotion.Sad);
-	console.log("Sorpresa:", evt.detail.output.emotion.Surprise);
+	console.log("Sad:", evt.detail.output.emotion.Sad);
+	console.log("Surprise:", evt.detail.output.emotion.Surprise);
 
 	Object.keys(emotions).forEach((k) => {
 		labels.push(k);
@@ -70,7 +70,7 @@ window.addEventListener(CY.modules().FACE_EMOTION.eventName, (evt) => {
 
 window.addEventListener(CY.modules().FACE_ATTENTION.eventName, (evt) => {
 	const attention = evt.detail.output.attention;
-	console.log("Atención:", evt.detail.output.attention);
+	console.log("ATTENTION:", evt.detail.output.attention);
 	console.log(";");
 	const elem = document.getElementById("myBar");
 	elem.style.width = attention * 100 + "%";
